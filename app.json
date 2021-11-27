@@ -1,0 +1,8 @@
+{
+  "cron": [
+    {
+      "command": "flask update",
+      "schedule": "4 * * * *"
+    }
+  ]
+}

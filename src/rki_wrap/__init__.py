@@ -35,6 +35,10 @@ def create_app():
 
         return buf.getvalue()
 
+    @app.get("/status")
+    def status():
+        return "ok"
+
     app.cli.command("update")(run_update)
     app.cli.command("show")(show)
 

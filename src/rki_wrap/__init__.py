@@ -5,7 +5,7 @@ import datetime
 
 from flask_migrate import Migrate
 
-from rki_wrap.update import run_update, show
+from rki_wrap.update import add_commands
 from rki_wrap.model import db, Entry
 from rki_wrap import config
 
@@ -39,7 +39,6 @@ def create_app():
     def status():
         return "ok"
 
-    app.cli.command("update")(run_update)
-    app.cli.command("show")(show)
+    add_commands(app)
 
     return app

@@ -1,8 +1,6 @@
 FROM python:3.9-slim-buster
 
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y uwsgi &&\
-    rm -rf /var/lib/apt/lists/*
+RUN pip3 install gunicorn
 
 WORKDIR /app
 

@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import click
 import time
+import random
 
 from rki_wrap import config
 from rki_wrap.model import db, Entry
@@ -13,8 +14,9 @@ def add_commands(app):
     @click.option("--jitter", envvar="UPDATE_JITTER_SECONDS", default=0)
     def run_update(jitter: int):
 
-        print("Sleeping for", jitter, "seconds")
-        time.sleep(jitter)
+        delay = random.randint(0, jitter)
+        print("Sleeping for", delay, "seconds")
+        time.sleep(delay)
 
         if config.HEALTHCHECK_URL is not None:
             requests.get(config.HEALTHCHECK_URL + "/start", timeout=10)

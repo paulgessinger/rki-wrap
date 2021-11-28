@@ -14,3 +14,4 @@ COPY migrations /app/migrations
 COPY wsgi.py .
 COPY Procfile .
 COPY CHECKS .
+COPY app.json .

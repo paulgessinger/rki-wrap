@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SOURCE_URL = os.environ["SOURCE_URL"]
+EXCEL_SOURCE_URL = os.environ["EXCEL_SOURCE_URL"]
 
 SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
 SQLALCHEMY_TRACK_MODIFICATIONS = False

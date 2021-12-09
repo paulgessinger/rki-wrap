@@ -2,12 +2,16 @@ from flask import Flask
 import csv
 import io
 import datetime
+import logging
 
 from flask_migrate import Migrate
 
 from rki_wrap.update import add_commands
 from rki_wrap.model import db, Entry
 from rki_wrap import config
+
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 def create_app():
@@ -24,7 +28,7 @@ def create_app():
         writer.writeheader()
         for entry in Entry.query.filter(
             Entry.date > datetime.date.today() - config.DATE_WINDOW
-        ).all():
+        ).order_by(Entry.date).all():
             writer.writerow(
                 {
                     "date": entry.date,
